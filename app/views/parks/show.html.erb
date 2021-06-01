@@ -1,19 +1,16 @@
 <div class="show-container">
   <div class="card-trip">
     <% if @park.photos.attached? %>
-    <%= cl_image_tag @park.photo.key %>
+      <%= cl_image_tag @park.photos.first.key %>
     <% else %>
-    <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
+      <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
     <% end %>
     <div class="card-trip-infos">
       <div>
         <h2 class="park"><%= @park.name %></h2>
         <h3><%= @park.details %></h3>
-        <p><strong>Uploaded by <%= @park.user.email %></strong></p>
       </div>
-      <h2 class="card-trip-pricing"><%= @park.price %></h2>
       <%= cl_image_tag '11276241_890671564313185_1851098347_n.jpg_fb3oxk', class: "card-trip-user avatar-bordered" %>
-      <%= link_to "Book", new_park_booking_path(@park), class: "btn btn-primary mb-3 card-trip-btn" %>
     </div>
   </div>
   <div id="map"
