@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-  belongs_to :park_category
+  has_many :park_categories
 end
