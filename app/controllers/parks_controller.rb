@@ -1,5 +1,6 @@
 class ParksController < ApplicationController
   def show
+    @categories = Category.all
     @park = Park.find(params[:id])
     @park_arr = []
     @park_arr << @park

@@ -9,6 +9,7 @@ end
 
 Park.destroy_all
 User.destroy_all
+Category.destroy_all
 
 cristina = User.create(email: 'cristina@example.com', password: '123456', first_name: 'Cristina', last_name: 'Salazar')
 mikael = User.create(email: 'mikael@example.com', password: '123456', first_name: 'Mikael', last_name: 'Svensson')
@@ -33,3 +34,39 @@ park_four = Park.new(name: "Vasaparken", address: 'Vasaparken', region: 'Vasasta
 file = URI.open('http://www.noje.se/uploads/articles/7d51a276bde29a2b7b5f14b661f2df1a.jpg')
 park.photos.attach(io: handle_string_io_as_file(file, 'image.png'), filename: 'park_four.png', content_type: 'image/png')
 park_four.save
+
+parking = Category.new(name: 'parking', emoji: '&#127359;&#65039;')
+parking.save
+
+toilets = Category.new(name: 'toilets', emoji: '&#128702;')
+toilets.save
+
+skating = Category.new(name: 'skating', emoji: '&#128761;')
+skating.save
+
+baby = Category.new(name: 'suitable for young ones', emoji: '&#128118;')
+baby.save
+
+kid = Category.new(name: 'suitable for kids', emoji: '&#129490;')
+kid.save
+
+picnic = Category.new(name: 'picnic', emoji: '&#129386;')
+picnic.save
+
+grill = Category.new(name: 'grill', emoji: '&#127789;')
+grill.save
+
+swimming = Category.new(name: 'swimming', emoji: '&#127754;')
+swimming.save
+
+gym = Category.new(name: 'outdoor gym', emoji: '&#128170;')
+gym.save
+
+pets = Category.new(name: 'pet-friendly', emoji: '&#128054;')
+pets.save
+
+drinking = Category.new(name: 'drinking allowed', emoji: '&#127866;')
+drinking.save
+
+running = Category.new(name: 'running', emoji: '&#128095;')
+running.save

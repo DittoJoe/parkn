@@ -10,7 +10,7 @@
     <% end %>
     <div class="card-show-infos">
       <div class="emojis">
-        <h3>😬😬😬😬😬😬😬😬😬😬😬😬😬😬</h3>
+        <h3><% @categories.each do |cat| %><%= raw cat.emoji %> <% end %></h3>
       </div>
       <div>
         <h3><%= @park.details %></h3>
