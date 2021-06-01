@@ -1,6 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #013b28;
+
+}
+.navbar-lewagon h1 {
+  font-family: 'Amatic SC', cursive;
+  color: white;
+  font-size: 52px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +15,17 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-light .navbar-nav .active > .nav-link, {
+  color: white;
+  font-size: 16px;
+  & :hover {
+    color: black;
+  }
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+  font-size: 16px;
 }
