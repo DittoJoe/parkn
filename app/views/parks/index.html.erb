@@ -1,7 +1,19 @@
 <div class="container">
-  <h3>ParkN</h3>
-<% @parks.each do |park| %>
-<%= cl_image_tag park.photos.first.key if park.photos.attached? %>
-<%= park.name %>
-<%= park.region %>
-<% end %>
+    <div class="cards-index">
+      <% @parks.each do |park| %>
+        <%= link_to park_path(park) do %>
+        <div class="card-park">
+          <%= cl_image_tag park.photos.first.key if park.photos.attached? %>
+         <div class="card-park-infos">
+          <div>
+            <h2> <%= park.name %> </h2>
+            <p> Here will go the details of each park </p>
+          </div>
+          <h2 class="card-park-pricing"> <%= park.region %></h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-park-user avatar-bordered" />
+         </div>
+       </div>
+       <% end %>
+      <% end %>
+    </div>
+</div>
