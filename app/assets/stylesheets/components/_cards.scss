@@ -62,54 +62,54 @@ h3 {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-.card-trip {
+.card-show {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border: 1px solid #919191;
+  width: 1000px;
 }
 
-.card-trip > img {
+.card-show > img {
   height: 260px;
   width: 100%;
   object-fit: cover;
   border-bottom: 1px solid #919191;
 }
 
-.card-trip h2 {
+.card-show h2 {
   font-size: 24px;
   font-weight: bold;
   margin: 16px 0;
 }
 
-.card-trip h3 {
+.card-show h3 {
   font-size: 16px;
   margin: 16px 0;
 }
 
-.card-trip p {
+.card-show p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
 
 
-.card-trip .card-trip-infos {
+.card-show .card-show-infos {
   padding: 16px;
-  display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
 }
 
-.card-trip-infos .card-trip-user {
+.card-show-infos .card-show-user {
   position: absolute;
   right: 16px;
   top: -20px;
   width: 40px;
 }
 
-.card-trip-pricing {
+.card-show-pricing {
   position: absolute;
   top: 280px;
   right: 20px;

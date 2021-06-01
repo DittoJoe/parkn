@@ -15,7 +15,7 @@ const initMapbox = () => {
         new mapboxgl.Marker()
           .setLngLat([ marker.lng, marker.lat ])
           .addTo(map);
-          map.flyTo({center: [ marker.lng, marker.lat ], zoom: 12})
+          map.flyTo({center: [ marker.lng, marker.lat ], zoom: 14})
     });
   }
 };
