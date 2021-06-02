@@ -1,6 +1,12 @@
 class ParksController < ApplicationController
    def index
     @parks = Park.all
+    if params[:query].present?
+      #sql_query = "name ILIKE :query OR details ILIKE :query"
+      @parks = Park.search_by_name_and_details(params[:query])
+    else
+      @parks = Park.all
+    end
    end
 
   def show
