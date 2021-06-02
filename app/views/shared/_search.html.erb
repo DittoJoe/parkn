@@ -1,6 +1,6 @@
     <div class="search-bar">
       <%= form_tag parks_path, method: :get do %>
-        <div style="float:left; width: 50%; opacity: 0.4;">
+        <div style="float:left; width: 42.5%; opacity: 0.6;">
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
@@ -10,3 +10,4 @@
        <div style="float:left;"><%= submit_tag "Search", class: "btn btn-primary" %></div>
       <% end %>
     </div>
+

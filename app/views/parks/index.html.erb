@@ -1,3 +1,4 @@
+<div class="srch"><%= render 'shared/search' %></div>
 <div class="show-container">
   <div class="cards-index">
     <% @parks.each do |park| %>
@@ -10,7 +11,7 @@
         </div>
         <p class="card-park-region"> <%= park.region %></p>
        </div>
-     </div>
+      </div>
      <% end %>
     <% end %>
   </div>
@@ -20,3 +21,4 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
