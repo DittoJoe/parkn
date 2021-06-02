@@ -30,43 +30,44 @@ park_two.save
 # park_three.photos.attach(io: handle_string_io_as_file(file, 'image.png'), filename: 'park_three.png', content_type: 'image/png')
 # park_three.save
 
-park_four = Park.new(name: "Vasaparken", address: 'Vasaparken', region: 'Vasastan', details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+park_four = Park.new(name: "Vasaparken", address: 'Vasaparken', region: 'Norrmalm', details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
 file = URI.open('http://www.noje.se/uploads/articles/7d51a276bde29a2b7b5f14b661f2df1a.jpg')
 park_four.photos.attach(io: handle_string_io_as_file(file, 'image.png'), filename: 'park_four.png', content_type: 'image/png')
 park_four.save
 
-parking = Category.new(name: 'parking', emoji: '&#127359;&#65039;')
+parking = Category.new(name: 'parking', emoji: 'parking')
 parking.save
 
-toilets = Category.new(name: 'toilets', emoji: '&#128702;')
+
+toilets = Category.new(name: 'toilets', emoji: 'toilet')
 toilets.save
 
-skating = Category.new(name: 'skating', emoji: '&#128761;')
+skating = Category.new(name: 'skating', emoji: 'skating')
 skating.save
 
-baby = Category.new(name: 'suitable for young ones', emoji: '&#128118;')
+baby = Category.new(name: 'suitable for young ones', emoji: 'baby')
 baby.save
 
-kid = Category.new(name: 'suitable for kids', emoji: '&#129490;')
+kid = Category.new(name: 'suitable for kids', emoji: 'child')
 kid.save
 
-picnic = Category.new(name: 'picnic', emoji: '&#129386;')
+picnic = Category.new(name: 'picnic', emoji: 'shopping-basket')
 picnic.save
 
-grill = Category.new(name: 'grill', emoji: '&#127789;')
+grill = Category.new(name: 'grill', emoji: 'hamburger')
 grill.save
 
-swimming = Category.new(name: 'swimming', emoji: '&#127754;')
+swimming = Category.new(name: 'swimming', emoji: 'swimming-pool')
 swimming.save
 
-gym = Category.new(name: 'outdoor gym', emoji: '&#128170;')
+gym = Category.new(name: 'outdoor gym', emoji: 'dumbbell')
 gym.save
 
-pets = Category.new(name: 'pet-friendly', emoji: '&#128054;')
+pets = Category.new(name: 'pet-friendly', emoji: 'paw')
 pets.save
 
-drinking = Category.new(name: 'drinking allowed', emoji: '&#127866;')
+drinking = Category.new(name: 'drinking allowed', emoji: 'beer')
 drinking.save
 
-running = Category.new(name: 'running', emoji: '&#128095;')
+running = Category.new(name: 'running', emoji: 'running')
 running.save

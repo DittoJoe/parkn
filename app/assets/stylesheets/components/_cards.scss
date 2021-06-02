@@ -3,6 +3,39 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+.emoji-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.emoji-card {
+  border: solid 1px black;
+  border-radius: 16px;
+  padding: 0px 16px 0px 8px;
+  margin: 4px;
+  display: flex;
+  justify-content: space-between;
+  h3 {
+    padding: 4px 0px;
+  }
+}
+
+.emoji {
+  margin: 0!important;
+  i {
+    color: $park_green;
+  }
+}
+
+.line {
+  width: 1px;
+  background: black;
+}
+
+.score {
+  margin: 0!important;
+}
+
 .card-show {
   overflow: hidden;
   background: white;
