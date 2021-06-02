@@ -1,0 +1,13 @@
+<div class="container col-8 col-offset-5 mt-5 bg-white py-5 px-5">
+  <div>
+    <h2 id="form-title">Add a park</h2>
+    <%= simple_form_for(@park) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :region, :as => :select, :collection => Park::REGIONS %>
+      <%= f.input :details %>
+      <%= f.input :photos, as: :file %>
+      <%= f.submit class: "btn btn-success w-100" %>
+    <% end %>
+  </div>
+</div>
