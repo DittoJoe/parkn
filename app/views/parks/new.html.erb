@@ -6,7 +6,7 @@
       <%= f.input :address %>
       <%= f.input :region, :as => :select, :collection => Park::REGIONS %>
       <%= f.input :details %>
-      <%= f.input :photos, as: :file %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.submit class: "btn btn-success w-100" %>
     <% end %>
   </div>
