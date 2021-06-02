@@ -1,8 +1,9 @@
 .cards-index {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  margin-top: 22px;
+  margin-top: 0px;
+  width: 100%;
 }
 
 .card-park {
@@ -48,4 +49,8 @@
 .cards-index a {
   color: black;
   text-decoration: none;
+}
+
+h3 {
+  font-size: 16px;
 }
