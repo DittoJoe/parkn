@@ -1,9 +1,13 @@
- <div class="container">
-  <h1>Your favorite parks 💚</h1>
-      <% @bookmarks.each do |bookmark| %>
-        <%= link_to @park_path do %>
-          <%= cl_image_tag bookmark.park.photos.first.key if bookmark.park.photos.attached? %>
-          <h2> <%= bookmark.park.name %> </h2>
-        <% end %>
-      <% end %>
+<div class="flip-card">
+  <% @bookmarks.each do |bookmark| %>
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <%= cl_image_tag bookmark.park.photos.first.key, style: "width:300px;height:300px;object-fit:cover;" %>
+    </div>
+    <div class="flip-card-back">
+      <h1><%= link_to bookmark.park.name, park_path(bookmark.park)%></h1>
+    </div>
   </div>
+  <% end %>
+</div>
+
