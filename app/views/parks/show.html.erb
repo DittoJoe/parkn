@@ -26,6 +26,9 @@
         <h3><%= @park.details %></h3>
       </div>
     </div>
+    <div>
+      <%= link_to 'Favourite', park_bookmarks_path(@park), :class => "btn btn-flat", method: "post" %>
+    </div>
   </div>
   <div id="map"
      style="width: 100%; height: 600px;"
