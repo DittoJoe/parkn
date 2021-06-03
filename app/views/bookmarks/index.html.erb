@@ -1,0 +1,9 @@
+ <div class="container">
+  <h1>Your favorite parks 💚</h1>
+      <% @bookmarks.each do |bookmark| %>
+        <%= link_to @park_path do %>
+          <%= cl_image_tag bookmark.park.photos.first.key if bookmark.park.photos.attached? %>
+          <h2> <%= bookmark.park.name %> </h2>
+        <% end %>
+      <% end %>
+  </div>
