@@ -10,12 +10,16 @@
     <% end %>
     <div class="card-show-infos">
       <div class="emoji-cards">
-        <% @categories.each do |cat| %>
+        <% @park_categories.each do |park_category| %>
+        <%= link_to park_category_votes_path(park_category), class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
           <div class="emoji-card">
-            <h3 class="emoji"><i class="fas fa-<%= cat.emoji %>"></i></h3>
+            <h3 class="emoji">
+              <i class="fas fa-<%= park_category.category.emoji %>" title="<%= park_category.category.name.capitalize %>"></i>
+            </h3>
             <div class="line"></div>
-            <h3 class="score">0</h3>
+            <h3 class="score" data-counter-target="count"><%= park_category.votes.count %></h3>
           </div>
+        <% end %>
         <% end %>
       </div>
       <div>
@@ -29,5 +33,3 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
-
