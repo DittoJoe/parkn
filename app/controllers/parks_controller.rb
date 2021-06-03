@@ -17,8 +17,8 @@ class ParksController < ApplicationController
   end
 
   def show
-    @categories = Category.all
     @park = Park.find(params[:id])
+    @park_categories = ParkCategory.where(park_id: @park.id)
     @park_arr = []
     @park_arr << @park
     @markers = @park_arr.map do |park|
@@ -40,6 +40,9 @@ class ParksController < ApplicationController
       redirect_to park_path(@park)
     else
       render :new
+    end
+    Category.all.each do |category|
+      ParkCategory.create(category_id: category.id, park_id: @park.id)
     end
   end
 

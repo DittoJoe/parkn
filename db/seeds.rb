@@ -45,7 +45,7 @@ toilets.save
 skating = Category.new(name: 'skating', emoji: 'skating')
 skating.save
 
-baby = Category.new(name: 'suitable for young ones', emoji: 'baby')
+baby = Category.new(name: 'suitable for babies and toddlers', emoji: 'baby')
 baby.save
 
 kid = Category.new(name: 'suitable for kids', emoji: 'child')
@@ -71,3 +71,12 @@ drinking.save
 
 running = Category.new(name: 'running', emoji: 'running')
 running.save
+
+parks = Park.all
+categories = Category.all
+
+parks.each do |park|
+  categories.each do |category|
+    ParkCategory.create(category_id: category.id, park_id: park.id, score: 0)
+  end
+end
