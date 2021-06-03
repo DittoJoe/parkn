@@ -36,18 +36,4 @@ document.addEventListener('turbolinks:load', () => {
   // initAutocomplete();
 })
 
-// import "controllers"
-
-// import { Controller } from "stimulus";
-
-// export default class extends Controller {
-//   static targets = [ 'count' ];
-
-//   refresh(event) {
-//     fetch('/park_categories/:park_category_id/votes', { headers: { accept: "application/json" } })
-//     .then(response => response.json())
-//     .then((data) => {
-//       console.log(data);
-//     });
-//   }
-// }
+import "controllers"

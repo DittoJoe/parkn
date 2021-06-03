@@ -10,6 +10,7 @@ end
 Park.destroy_all
 User.destroy_all
 Category.destroy_all
+ParkCategory.destroy_all
 
 cristina = User.create(email: 'cristina@example.com', password: '123456', first_name: 'Cristina', last_name: 'Salazar')
 mikael = User.create(email: 'mikael@example.com', password: '123456', first_name: 'Mikael', last_name: 'Svensson')
@@ -77,6 +78,6 @@ categories = Category.all
 
 parks.each do |park|
   categories.each do |category|
-    ParkCategory.create(category_id: category.id, park_id: park.id, score: 0)
+    ParkCategory.create(category_id: category.id, park_id: park.id)
   end
 end
