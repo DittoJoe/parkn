@@ -1,4 +1,9 @@
 class BookmarksController < ApplicationController
+  def index
+    @user = current_user
+    @bookmarks = @user.bookmarks
+  end
+  
   def create
     @bookmark = Bookmark.new
     @park = Park.find(params[:park_id])
