@@ -6,6 +6,10 @@
 .emoji-cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  a {
+  text-decoration: none;
+  color: black;
+  }
 }
 
 .emoji-card {
@@ -21,10 +25,7 @@
   }
 }
 
-a {
-  text-decoration: none;
-  color: black;
-}
+
 
 
 .emoji {
@@ -39,7 +40,7 @@ a {
   background: black;
 }
 
-.score {
+.counter {
   margin: 0!important;
 }
 
