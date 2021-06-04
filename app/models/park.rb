@@ -1,5 +1,5 @@
 class Park < ApplicationRecord
-  REGIONS = ["Rinkeby-Kista", "Spånga-Tensta", "Hässelby-Vällingby", "Bromma", "Kungsholmen", "Norrmalm", "Östermalm", "Södermalm", "Skärholmen", "Hägersten-Liljeholmen", "Älvsjö", "Enskede-Årsta-Vantör", "Farsta", "Skarpnäck"]
+  REGIONS = ["Rinkeby-Kista", "Kungsholmen", "Norrmalm", "Östermalm", "Södermalm", "Hägersten-Älvsjö", "Enskede-Årsta-Vantör"]
   has_many :park_categories, dependent: :destroy
   has_many :reviews
   has_many :bookmarks, dependent: :destroy
@@ -16,3 +16,5 @@ class Park < ApplicationRecord
     }
   validates :region, inclusion: { in: REGIONS }
 end
+
+# REGIONS = ["Rinkeby-Kista", "Spånga-Tensta", "Hässelby-Vällingby", "Bromma", "Kungsholmen", "Norrmalm", "Östermalm", "Södermalm", "Skärholmen", "Hägersten-Liljeholmen", "Älvsjö", "Enskede-Årsta-Vantör", "Farsta", "Skarpnäck"]

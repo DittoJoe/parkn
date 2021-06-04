@@ -1,4 +1,6 @@
 require 'open-uri'
+require 'nokogiri'
+
 def handle_string_io_as_file(io, filename)
   return io unless io.class == StringIO
   file = Tempfile.new(["temp",".png"], encoding: 'ascii-8bit')
@@ -12,6 +14,7 @@ User.destroy_all
 Category.destroy_all
 Bookmark.destroy_all
 ParkCategory.destroy_all
+Vote.destroy_all
 
 cristina = User.create(email: 'cristina@example.com', password: '123456', first_name: 'Cristina', last_name: 'Salazar')
 mikael = User.create(email: 'mikael@example.com', password: '123456', first_name: 'Mikael', last_name: 'Svensson')
@@ -87,3 +90,52 @@ users = User.all
 users.each do |user|
   Bookmark.create(user_id: user.id, park_id: Park.last.id)
 end
+
+img_prefix = "https://parker.stockholm"
+url = "https://parker.stockholm/parker/"
+html_file = URI.open(url).read
+html_doc = Nokogiri::HTML(html_file)
+
+# get regions in an array
+# find the next one
+# return the one before
+
+regions = []
+regions_two = []
+data = []
+
+html_doc.search('.accordion-item__title').each do |element|
+  regions << element.text.strip
+end
+
+# html_doc.search('.arrow-link').each do |element|
+#   # park = Park.new(name: element.text.strip, address: element.text.strip, region: 'Kungsholmen', details: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
+#   # file = URI.open('https://upload.wikimedia.org/wikipedia/commons/9/9a/R%C3%A5lambshovsparken_syd_2010.jpg')
+#   # park.photos.attach(io: handle_string_io_as_file(file, 'image.png'), filename: 'park.png', content_type: 'image/png')
+#   # park.save
+# end
+
+html_doc.search('.accordion-item__title, .arrow-link').each do |element|
+  data << element.text.strip
+end
+
+data.slice(0..data.count - 11).each do |name|
+  if regions.include?(name)
+    regions_two << name
+  else
+    park_url = "#{url}#{name.parameterize}"
+    park_html_file = URI.open(park_url).read
+    park_html_doc = Nokogiri::HTML(park_html_file)
+    region = regions_two.last
+    details = park_html_doc.search('p')[2].text
+    img_suffix = park_html_doc.search('figure').search('img').attribute("src").value.strip
+    img_url = "#{img_prefix}#{img_suffix}"
+    park = Park.new(name: name, address: name, region: region, details: details)
+    file = URI.open(img_url)
+    park.photos.attach(io: handle_string_io_as_file(file, 'image.png'), filename: 'park.png', content_type: 'image/png')
+    park.save
+  end
+end
+
+puts 'done'
+
