@@ -2,6 +2,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
   border-radius: 4px;
   margin-bottom: 3rem;
+  opacity: 0.8;
 }
 
 #create-form {
@@ -13,4 +14,8 @@
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border: 1px solid rgb(40, 40, 40);
+}
+
+#img-back {
+  background-size: contain;
 }
