@@ -2,7 +2,6 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 400px;
   text-align: center;
-  background-color: #b8f2b5;
 
 }
 
@@ -18,12 +17,6 @@
 }
 
 
-a {
-  text-decoration: none;
-  font-size: 22px;
-  color: black;
-}
-
 .fav-park {
   margin-left: 22px;
   margin-top: 22px;
@@ -34,4 +27,15 @@ a {
 .card-park-fav {
   margin-left: 42px;
   margin-right: 42px;
+  max-height: 256px;
+}
+
+#card-delete{
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+}
+
+.fa-trash {
+  color: gray;
 }
