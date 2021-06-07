@@ -32,6 +32,8 @@
         </div>
         <div>
           <h3><%= @park.details %></h3>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add a review</button>
+          <%= render 'reviews/modal' %>
         </div>
       </div>
     </div>
@@ -41,7 +43,7 @@
         <div class="card-review">
           <h3> <%= review.user.first_name %> <%= review.user.last_name %> <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span> </h3>
           <p> <%= review.content %> </p>
-        </div>       
+        </div>
       <% end %>
     </div>
   </div>

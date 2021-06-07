@@ -34,3 +34,15 @@
     display: none;
   }
 }
+
+.modal-backdrop {
+  opacity:0.6 !important;
+}
+
+.br-theme-css-stars .br-widget a {
+  font-size: 24px !important;
+}
+
+.br-theme-css-stars .br-widget a.br-selected::after {
+  color: $yellow !important;
+}
