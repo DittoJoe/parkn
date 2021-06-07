@@ -3,6 +3,10 @@
   border-radius: 4px;
   margin-bottom: 3rem;
   opacity: 0.8;
+  h2 {
+    text-align: center;
+    margin-bottom: 16px;
+  }
 }
 
 #create-form {
@@ -18,4 +22,15 @@
 
 #img-back {
   background-size: contain;
+}
+
+.br-widget {
+  display: flex;
+  justify-content: center;
+}
+
+.select {
+  label {
+    display: none;
+  }
 }
