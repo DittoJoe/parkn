@@ -27,10 +27,10 @@
       </div>
       <div>
         <h3><%= @park.details %></h3>
+        <%= link_to "Add review", new_park_review_path(@park), class: "btn btn-success mb-3" %>
       </div>
     </div>
   </div>
-
   <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
