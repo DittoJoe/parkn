@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   resources :parks, except: :destroy do
     resources :bookmarks, only: :create
+    resources :reviews, only: [:new, :create, :index]
   end
   resources :bookmarks, only: [:index, :destroy]
   resources :park_categories do

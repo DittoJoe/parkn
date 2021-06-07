@@ -1,0 +1,10 @@
+<div id="img-back"style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url( <%= image_path "park1.jpg" %>);">
+  <div id="create" class="container create-form col-8 col-offset-5 mt-5 bg-white py-5 px-5">
+    <%= simple_form_for [@park, @review] do |f| %>
+      <%= f.input :rating, collection: (1..5).to_a %>
+      <%= f.input :content %>
+      <%= f.submit "Submit" %>
+    <% end %>
+  </div>
+</div>
+
