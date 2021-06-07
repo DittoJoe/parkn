@@ -28,6 +28,7 @@ class ParksController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { park: park })
       }
     end
+    @favorite = is_favorite?(@park.id)
   end
 
   def new
@@ -60,5 +61,11 @@ class ParksController < ApplicationController
 
   def park_params
     params.require(:park).permit(:name, :address, :region, :details, photos: [])
+  end
+
+  def is_favorite?(id)
+    @user = current_user
+    @bookmark = @user.bookmarks.where(:park_id => id)
+    return !@bookmark.empty?
   end
 end

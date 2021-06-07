@@ -11,8 +11,12 @@
       <% end %>
       <div class="card-show-infos">
         <%= link_to park_bookmarks_path(@park), method: "post" do %>
-          <i class="far fa-heart"></i>
-        <% end%>
+          <% if @favorite %>
+            <i class="fas fa-heart"></i>
+          <% else %>
+            <i class="far fa-heart"></i>
+          <% end %>
+        <% end %>
         <div class="emoji-cards">
           <% @park_categories.each do |park_category| %>
           <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
@@ -33,9 +37,9 @@
     </div>
     <div class="review-container">
       <div class="card-show">
-        <h4>Reviews</h4>  
+        <h4>Reviews</h4>
         <h3>Fredhällsparken is located on the west side of Kungsholmen along Drottningholmsvägen. The park is appreciated for its open lawns and for the large splash pond. Fredhällsparken is well used for spontaneous games, ball games, sunbathing and picnics. A stream flows from the park down to Tranebergssund. In the park there are two playgrounds and a smaller tennis court that is flushed to the ice rink when the winter weather allows. Down by the water there are seats overlooking the marina. In the westernmost part of the park there is a so-called dog resting area where dogs can run loose. Dog owners are always responsible for supervising their dog and ensuring that it does not create discomfort for other park visitors.</h3>
-      </div>       
+      </div>
     </div>
   </div>
 

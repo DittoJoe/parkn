@@ -10,6 +10,7 @@ class BookmarksController < ApplicationController
     @bookmark.park = @park
     @bookmark.user = current_user
     @bookmark.save
+    redirect_to park_path(@park)
   end
 
   def destroy
