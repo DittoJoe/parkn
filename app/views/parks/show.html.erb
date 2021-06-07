@@ -1,35 +1,50 @@
 <div class="container text-center pt-3">
   <h1><%= @park.name %></h1>
 </div>
-<div class="show-container">
-  <div class="card-show">
-    <% if @park.photos.attached? %>
-      <%= cl_image_tag @park.photos.first.key %>
-    <% else %>
-      <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
-    <% end %>
-    <div class="card-show-infos">
-      <%= link_to park_bookmarks_path(@park), method: "post" do %>
-        <i class="far fa-heart"></i>
-      <% end%>
-      <div class="emoji-cards">
-        <% @park_categories.each do |park_category| %>
-        <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
-          <div class="emoji-card">
-            <h3 class="emoji">
-              <i class="fas fa-<%= park_category.category.emoji %>" title="<%= park_category.category.name.capitalize %>"></i>
-            </h3>
-            <div class="line"></div>
-            <h3 class="counter" data-counter-target="count" data-category="<%= park_category.id %>" ><%= park_category.votes.count %></h3>
-          </div>
+  <div class="show-container">
+    <div>
+    <div class="card-show">
+      <% if @park.photos.attached? %>
+        <%= cl_image_tag @park.photos.first.key %>
+      <% else %>
+        <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
+      <% end %>
+      <div class="card-show-infos">
+        <%= link_to park_bookmarks_path(@park), method: "post" do %>
+          <% if @favorite %>
+            <i class="fas fa-heart"></i>
+          <% else %>
+            <i class="far fa-heart"></i>
+          <% end %>
         <% end %>
-        <% end %>
+        <div class="emoji-cards">
+          <% @park_categories.each do |park_category| %>
+          <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
+            <div class="emoji-card">
+              <h3 class="emoji">
+                <i class="fas fa-<%= park_category.category.emoji %>" title="<%= park_category.category.name.capitalize %>"></i>
+              </h3>
+              <div class="line"></div>
+              <h3 class="counter" data-counter-target="count" data-category="<%= park_category.id %>" ><%= park_category.votes.count %></h3>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+        <div>
+          <h3><%= @park.details %></h3>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add a review</button>
+          <%= render 'reviews/modal' %>
+        </div>
       </div>
-      <div>
-        <h3><%= @park.details %></h3>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add a review</button>
-        <%= render 'reviews/modal' %>
-      </div>
+    </div>
+    <div class="review-container">
+      <h1>Reviews</h1>
+      <% @reviews.each do |review| %>
+        <div class="card-review">
+          <h3> <%= review.user.first_name %> <%= review.user.last_name %> <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span> </h3>
+          <p> <%= review.content %> </p>
+        </div>
+      <% end %>
     </div>
   </div>
   <div id="map"

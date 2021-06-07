@@ -18,6 +18,7 @@ class ParksController < ApplicationController
 
   def show
     @review = Review.new
+    @reviews = Review.all
     @park = Park.find(params[:id])
     @park_categories = ParkCategory.where(park_id: @park.id)
     @park_arr = []
@@ -29,6 +30,7 @@ class ParksController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: { park: park })
       }
     end
+    @favorite = is_favorite?(@park.id)
   end
 
   def new
@@ -61,5 +63,11 @@ class ParksController < ApplicationController
 
   def park_params
     params.require(:park).permit(:name, :address, :region, :details, photos: [])
+  end
+
+  def is_favorite?(id)
+    @user = current_user
+    @bookmark = @user.bookmarks.where(:park_id => id)
+    return !@bookmark.empty?
   end
 end
