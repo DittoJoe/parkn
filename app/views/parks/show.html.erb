@@ -32,10 +32,13 @@
       </div>
     </div>
     <div class="review-container">
-      <div class="card-show">
-        <h4>Reviews</h4>  
-        <h3>Fredhällsparken is located on the west side of Kungsholmen along Drottningholmsvägen. The park is appreciated for its open lawns and for the large splash pond. Fredhällsparken is well used for spontaneous games, ball games, sunbathing and picnics. A stream flows from the park down to Tranebergssund. In the park there are two playgrounds and a smaller tennis court that is flushed to the ice rink when the winter weather allows. Down by the water there are seats overlooking the marina. In the westernmost part of the park there is a so-called dog resting area where dogs can run loose. Dog owners are always responsible for supervising their dog and ensuring that it does not create discomfort for other park visitors.</h3>
-      </div>       
+      <h1>Reviews</h1>
+      <% @reviews.each do |review| %>
+        <div class="card-review">
+          <h3> <%= review.user.first_name %> <%= review.user.last_name %> <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span> </h3>
+          <p> <%= review.content %> </p>
+        </div>       
+      <% end %>
     </div>
   </div>
 
