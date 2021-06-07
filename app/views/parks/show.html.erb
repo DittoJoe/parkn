@@ -9,6 +9,9 @@
       <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
     <% end %>
     <div class="card-show-infos">
+      <%= link_to park_bookmarks_path(@park), method: "post" do %>
+        <i class="far fa-heart"></i>
+      <% end%>
       <div class="emoji-cards">
         <% @park_categories.each do |park_category| %>
         <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
@@ -26,10 +29,8 @@
         <h3><%= @park.details %></h3>
       </div>
     </div>
-    <div>
-      <% link_to 'Favourite', park_bookmarks_path(@park), :class => "btn btn-flat", method: "post" %>
-    </div>
   </div>
+
   <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
