@@ -1,35 +1,44 @@
 <div class="container text-center pt-3">
   <h1><%= @park.name %></h1>
 </div>
-<div class="show-container">
-  <div class="card-show">
-    <% if @park.photos.attached? %>
-      <%= cl_image_tag @park.photos.first.key %>
-    <% else %>
-      <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
-    <% end %>
-    <div class="card-show-infos">
-      <%= link_to park_bookmarks_path(@park), method: "post" do %>
-        <i class="far fa-heart"></i>
-      <% end%>
-      <div class="emoji-cards">
-        <% @park_categories.each do |park_category| %>
-        <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
-          <div class="emoji-card">
-            <h3 class="emoji">
-              <i class="fas fa-<%= park_category.category.emoji %>" title="<%= park_category.category.name.capitalize %>"></i>
-            </h3>
-            <div class="line"></div>
-            <h3 class="counter" data-counter-target="count" data-category="<%= park_category.id %>" ><%= park_category.votes.count %></h3>
-          </div>
-        <% end %>
-        <% end %>
-      </div>
-      <div>
-        <h3><%= @park.details %></h3>
+  <div class="show-container">
+    <div>
+    <div class="card-show">
+      <% if @park.photos.attached? %>
+        <%= cl_image_tag @park.photos.first.key %>
+      <% else %>
+        <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
+      <% end %>
+      <div class="card-show-infos">
+        <%= link_to park_bookmarks_path(@park), method: "post" do %>
+          <i class="far fa-heart"></i>
+        <% end%>
+        <div class="emoji-cards">
+          <% @park_categories.each do |park_category| %>
+          <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
+            <div class="emoji-card">
+              <h3 class="emoji">
+                <i class="fas fa-<%= park_category.category.emoji %>" title="<%= park_category.category.name.capitalize %>"></i>
+              </h3>
+              <div class="line"></div>
+              <h3 class="counter" data-counter-target="count" data-category="<%= park_category.id %>" ><%= park_category.votes.count %></h3>
+            </div>
+          <% end %>
+          <% end %>
+        </div>
+        <div>
+          <h3><%= @park.details %></h3>
+        </div>
       </div>
     </div>
+    <div class="review-container">
+      <div class="card-show">
+        <h4>Reviews</h4>  
+        <h3>Fredhällsparken is located on the west side of Kungsholmen along Drottningholmsvägen. The park is appreciated for its open lawns and for the large splash pond. Fredhällsparken is well used for spontaneous games, ball games, sunbathing and picnics. A stream flows from the park down to Tranebergssund. In the park there are two playgrounds and a smaller tennis court that is flushed to the ice rink when the winter weather allows. Down by the water there are seats overlooking the marina. In the westernmost part of the park there is a so-called dog resting area where dogs can run loose. Dog owners are always responsible for supervising their dog and ensuring that it does not create discomfort for other park visitors.</h3>
+      </div>       
+    </div>
   </div>
+
 
   <div id="map"
      style="width: 100%; height: 600px;"
@@ -37,3 +46,4 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
