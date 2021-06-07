@@ -11,8 +11,12 @@
       <% end %>
       <div class="card-show-infos">
         <%= link_to park_bookmarks_path(@park), method: "post" do %>
-          <i class="far fa-heart"></i>
-        <% end%>
+          <% if @favorite %>
+            <i class="fas fa-heart"></i>
+          <% else %>
+            <i class="far fa-heart"></i>
+          <% end %>
+        <% end %>
         <div class="emoji-cards">
           <% @park_categories.each do |park_category| %>
           <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
@@ -41,11 +45,9 @@
       <% end %>
     </div>
   </div>
-
   <div id="map"
      style="width: 100%; height: 600px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
