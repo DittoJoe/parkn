@@ -17,6 +17,7 @@ class ParksController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @park = Park.find(params[:id])
     @park_categories = ParkCategory.where(park_id: @park.id)
     @park_arr = []
