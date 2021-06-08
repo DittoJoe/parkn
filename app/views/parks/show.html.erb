@@ -7,7 +7,7 @@
       <% if @park.photos.attached? %>
         <%= cl_image_tag @park.photos.first.key %>
       <% else %>
-        <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
+        <%= cl_image_tag @park.key %>
       <% end %>
       <div class="card-show-infos">
         <div data-controller="like" data-like-target="link" data-park="<%= @park.id %>" data-bookmark="<%= Bookmark.find_by(user: current_user, park: @park).id if Bookmark.find_by(user: current_user, park: @park)%>">
@@ -21,6 +21,7 @@
             <% end %>
           <% end %>
         </div>
+        <%= render 'rating' %>
         <div class="emoji-cards">
           <% @park_categories.each do |park_category| %>
           <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
@@ -42,11 +43,17 @@
       </div>
     </div>
     <div class="review-container">
-      <h1>Reviews</h1>
+      <h1>Comments</h1>
       <% @reviews.each do |review| %>
         <div class="card-review">
-          <h3> <%= review.user.first_name %> <%= review.user.last_name %> <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span> </h3>
-          <p> <%= review.content %> </p>
+          <div class="avatar-img">
+            <%= cl_image_tag current_user.avatar.key, class: "avatar-review" %>
+          </div>
+          <div class="card-review-text">
+            <span id="review-name"> <%= review.user.first_name %> <%= review.user.last_name %> </span> 
+            <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span>
+            <p> <%= review.content %> </p>
+          </div>
         </div>
       <% end %>
     </div>

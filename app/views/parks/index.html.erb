@@ -3,16 +3,18 @@
   <div class="cards-index">
     <% @parks.each do |park| %>
       <%= link_to park_path(park) do %>
-      <div class="card-park">
-        <%= cl_image_tag park.photos.first.key if park.photos.attached? %>
-       <div class="card-park-infos">
-        <div>
-          <h2> <%= park.name %> </h2>
-        </div>
-        <p class="card-park-region"> <%= park.region %></p>
-       </div>
-      </div>
-     <% end %>
+        <div class="card-park">
+          <% if park.photos.attached? %>
+            <%= cl_image_tag park.photos.first.key %>
+          <% else %>
+            <%= cl_image_tag park.key %>
+          <% end %>
+            <div class="card-park-infos">
+              <div><h2><%= park.name %></h2></div>
+              <p class="card-park-region"> <%= park.region %></p>
+            </div>
+         </div>
+      <% end %>
     <% end %>
   </div>
   <div id="map"
