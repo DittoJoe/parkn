@@ -7,7 +7,7 @@
       <% if @park.photos.attached? %>
         <%= cl_image_tag @park.photos.first.key %>
       <% else %>
-        <img src="https://quickbutik.imgix.net/4582H/products/5bbc97e2b880c.png" />
+        <%= cl_image_tag @park.key %>
       <% end %>
       <div class="card-show-infos">
         <%= link_to park_bookmarks_path(@park), method: "post" do %>

@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       @rating = calculate_average(@park)
       redirect_to park_path(@park)
     else
-      render :new
+      render 'reviews/modal'
     end
   end
 
