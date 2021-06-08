@@ -1,0 +1,3 @@
+<%= link_to bookmark_path(Bookmark.find_by(user: current_user, park: @park)), method: "delete", data: { action: "click->like#delete", bookmark: Bookmark.find_by(user: current_user, park: @park).id} do %>
+  <i class="fas fa-heart"></i>
+<% end %>
