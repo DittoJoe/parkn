@@ -31,6 +31,7 @@ class ParksController < ApplicationController
       }
     end
     @favorite = is_favorite?(@park.id)
+    @rating = calculate_average(@park)
   end
 
   def new
@@ -57,6 +58,15 @@ class ParksController < ApplicationController
     @park = Park.find(params[:id])
     @park.update(park_params)
     redirect_to park_path(@park)
+  end
+
+  def calculate_average(park)
+    reviews = park.reviews
+    total = 0
+    reviews.each do |review|
+      total += review.rating
+    end
+    return total / reviews.count.to_f.round(1)
   end
 
   private

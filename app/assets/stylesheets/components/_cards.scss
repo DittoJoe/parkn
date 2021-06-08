@@ -98,10 +98,23 @@
 }
 
 .fa-heart {
-  color: lightgray;
   position: absolute;
   right: 8px;
   top: -240px;
   width: 40px;
   font-size: 24px;
+  color: #c34535;
+}
+
+.rating {
+  display: flex;
+  position: absolute;
+  left: 16px;
+  top: -40px;
+  width: 240px;
+  font-size: 24px;
+  i {
+    margin: 0 4px;
+    color: $yellow;
+  }
 }
