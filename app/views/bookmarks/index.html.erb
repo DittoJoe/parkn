@@ -4,7 +4,6 @@
       <h1> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h1>
       <p class="title">My favorite parks</p>
     </div>
-
     <div class="cards-index fav-park">
       <% @bookmarks.each do |bookmark| %>
         <div class="card-park card-park-fav">
@@ -17,13 +16,16 @@
             <div>
               <%=link_to bookmark.park.name, park_path(bookmark.park) %>
             </div>
-            <%= link_to bookmark_path(bookmark),  method: :delete, data: {confirm: "Are you sure?"} do %>
-              <i class="fas fa-trash"></i>
-            <% end %>
+             <div data-controller="like" data-like-target="link" data-park="<%= bookmark.park.id %>" data-bookmark="<%= Bookmark.find_by(user: current_user, park: bookmark.park).id if Bookmark.find_by(user: current_user, park: bookmark.park)%>">
+                  <%= link_to bookmark_path(Bookmark.find_by(user: current_user, park: bookmark.park)), method: "delete", data: { action: "click->like#delete"}, bookmark: Bookmark.find_by(user: current_user, park: bookmark.park.id) do %>
+                    <i class="fas fa-heart heart"></i>
+                <% end %>
+            </div>
           </div>
         </div>
-       <% end %>
+      <% end %>
     </div>
 </div>
+
 
 
