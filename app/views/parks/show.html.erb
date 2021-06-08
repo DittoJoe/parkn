@@ -17,6 +17,7 @@
             <i class="far fa-heart"></i>
           <% end %>
         <% end %>
+        <%= render 'rating' %>
         <div class="emoji-cards">
           <% @park_categories.each do |park_category| %>
           <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>

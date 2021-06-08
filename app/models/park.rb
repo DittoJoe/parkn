@@ -1,7 +1,7 @@
 class Park < ApplicationRecord
   REGIONS = ["Rinkeby-Kista", "Kungsholmen", "Norrmalm", "Östermalm", "Södermalm", "Hägersten-Älvsjö", "Enskede-Årsta-Vantör"]
   has_many :park_categories, dependent: :destroy
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
