@@ -1,4 +1,3 @@
-
 <div class="items d-flex">
     <div class="card-fav">
       <%= cl_image_tag current_user.avatar.key, class: "avatar-bookmark" %>
@@ -9,12 +8,16 @@
     <div class="cards-index fav-park">
       <% @bookmarks.each do |bookmark| %>
         <div class="card-park card-park-fav">
-          <%= cl_image_tag bookmark.park.photos.first.key if bookmark.park.photos.attached? %>
+          <% if bookmark.park.photos.attached? %>
+            <%= cl_image_tag bookmark.park.photos.first.key %>
+          <% else %>
+            <%= cl_image_tag bookmark.park.key %>
+          <% end %>
           <div class="card-park-infos">
             <div>
               <%=link_to bookmark.park.name, park_path(bookmark.park) %>
             </div>
-            <%= link_to bookmark_path(bookmark),  method: :delete, data: {confirm: "Are your sure?"} do %>
+            <%= link_to bookmark_path(bookmark),  method: :delete, data: {confirm: "Are you sure?"} do %>
               <i class="fas fa-trash"></i>
             <% end %>
           </div>
