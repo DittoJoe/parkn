@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_many :bookmarks
   has_many :reviews
   has_many :votes
+  has_one_attached :avatar
 end

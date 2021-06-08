@@ -39,11 +39,17 @@
       </div>
     </div>
     <div class="review-container">
-      <h1>Reviews</h1>
+      <h1>Comments</h1>
       <% @reviews.each do |review| %>
         <div class="card-review">
-          <h3> <%= review.user.first_name %> <%= review.user.last_name %> <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span> </h3>
-          <p> <%= review.content %> </p>
+          <div class="avatar-img">
+            <%= cl_image_tag current_user.avatar.key, class: "avatar-review" %>
+          </div>
+          <div class="card-review-text">
+            <span id="review-name"> <%= review.user.first_name %> <%= review.user.last_name %> </span> 
+            <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span>
+            <p> <%= review.content %> </p>
+          </div>
         </div>
       <% end %>
     </div>
