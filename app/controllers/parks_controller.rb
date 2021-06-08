@@ -60,15 +60,6 @@ class ParksController < ApplicationController
     redirect_to park_path(@park)
   end
 
-  def calculate_average(park)
-    reviews = park.reviews
-    total = 0
-    reviews.each do |review|
-      total += review.rating
-    end
-    return total / reviews.count.to_f.round(1)
-  end
-
   private
 
   def park_params
@@ -79,5 +70,14 @@ class ParksController < ApplicationController
     @user = current_user
     @bookmark = @user.bookmarks.where(:park_id => id)
     return !@bookmark.empty?
+  end
+
+  def calculate_average(park)
+    reviews = park.reviews
+    total = 0
+    reviews.each do |review|
+      total += review.rating
+    end
+    return total / reviews.count.to_f.round(1)
   end
 end
