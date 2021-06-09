@@ -1,6 +1,7 @@
 class ParksController < ApplicationController
   def index
     @parks = Park.all
+
     if params[:query].present?
       #sql_query = "name ILIKE :query OR details ILIKE :query"
       @parks = Park.search_by_name_and_details(params[:query])
@@ -21,6 +22,9 @@ class ParksController < ApplicationController
     @reviews = Review.all
     @park = Park.find(params[:id])
     @park_categories = ParkCategory.where(park_id: @park.id)
+    @park_categories.each do |pc|
+      pc.score
+    end
     # raise
     @park_arr = []
     @park_arr << @park

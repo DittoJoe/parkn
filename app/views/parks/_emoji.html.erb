@@ -1,5 +1,5 @@
 <div class="emoji-cards">
-  <% @park_categories.each do |park_category| %>
+  <% @park_categories.sort_by(&:score).reverse.each do |park_category| %>
   <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
     <div class="emoji-card">
       <h3 class="emoji">
@@ -11,3 +11,5 @@
   <% end %>
   <% end %>
 </div>
+
+
