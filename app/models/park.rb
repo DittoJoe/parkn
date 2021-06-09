@@ -14,6 +14,15 @@ class Park < ApplicationRecord
       tsearch: { prefix: true }
     }
   validates :region, inclusion: { in: REGIONS }
+
+  def rating
+    reviews = self.reviews
+    total = 0
+    reviews.each do |review|
+      total += review.rating
+    end
+    self.rating = total / reviews.count.to_f.round(1)
+  end
 end
 
 # REGIONS = ["Rinkeby-Kista", "Spånga-Tensta", "Hässelby-Vällingby", "Bromma", "Kungsholmen", "Norrmalm", "Östermalm", "Södermalm", "Skärholmen", "Hägersten-Liljeholmen", "Älvsjö", "Enskede-Årsta-Vantör", "Farsta", "Skarpnäck"]

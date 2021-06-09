@@ -1,4 +1,11 @@
-<div class="srch"><%= render 'shared/search' %></div>
+<div class="srch"><%= render 'shared/search' %>
+  <%= form_tag parks_path, method: :get do %>
+    <%= select_tag :sorting, options_for_select(["alphabetical", "rating"]), 
+      class: "form-control"
+    %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+</div>
 <div class="show-container">
   <div class="cards-index">
     <% @parks.each do |park| %>
@@ -23,4 +30,7 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
+
+
 
