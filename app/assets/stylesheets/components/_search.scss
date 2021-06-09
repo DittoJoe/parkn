@@ -25,12 +25,16 @@
 
 
  .srch .search-bar{
-	 width: 48%;
+	 width: 100%;
 	 align-content: center;
 	 #query {
-	 	opacity: 0.7; 
+	 	opacity: 0.7;
 	 }
 	  .btn {
   		opacity: 1;
   	 }
+ }
+
+ .srch {
+    margin-left: 0px!important;
  }
