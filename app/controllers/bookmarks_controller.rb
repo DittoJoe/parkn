@@ -10,12 +10,24 @@ class BookmarksController < ApplicationController
     @bookmark.park = @park
     @bookmark.user = current_user
     @bookmark.save
-    redirect_to park_path(@park)
+    respond_to do |format|
+      format.html
+      format.json {render json: { partial: render_to_string(partial: "bookmarks/delete.html.erb") }}
+    end
+    # redirect_to park_path(@park)
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:id])
-    @bookmark.destroy
-    redirect_to bookmarks_path
+
+      @bookmark = Bookmark.find(params[:id]) if Bookmark.find(params[:id])
+    if Bookmark.find(params[:id])
+      @park = @bookmark.park
+      @bookmark.destroy
+      respond_to do |format|
+        format.html
+        format.json { render json: { partial: render_to_string(partial: "bookmarks/create.html.erb") } }
+      end
+    end
+    # redirect_to park_path(@bookmark.park)
   end
 end

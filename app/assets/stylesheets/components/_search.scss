@@ -7,3 +7,29 @@
   color: black!important;
 
 }
+
+.home-search-bar {
+	width: 57%;
+}
+
+.home-search-bar .search-bar{
+  width: 100%;
+  #query {
+  	opacity: 0.6; 
+  }
+  .btn-flat {
+  	opacity: 1;
+  }
+ }
+
+
+ .srch .search-bar{
+	 width: 48%;
+	 align-content: center;
+	 #query {
+	 	opacity: 0.6; 
+	 }
+	  .btn {
+  		opacity: 1;
+  	 }
+ }
