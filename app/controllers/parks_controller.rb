@@ -1,12 +1,21 @@
 class ParksController < ApplicationController
   def index
     @parks = Park.all
-
+    @parks.each do |p|
+      p.rating
+    end
+      if params[:sorting].present?
+        if params[:sorting] == "alphabetical"
+          @parks = @parks.order('name ASC')
+        elsif params[:sorting] == "rating"
+          @parks = @parks.order('rating ASC')
+        end
+      end
     if params[:query].present?
       #sql_query = "name ILIKE :query OR details ILIKE :query"
-      @parks = Park.search_by_name_and_details(params[:query])
+      @parks = @parks.search_by_name_and_details(params[:query])
     else
-      @parks = Park.all
+      @parks = @parks
     end
     @markers = @parks.geocoded.map do |park|
       {

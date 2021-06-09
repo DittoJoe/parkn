@@ -23,5 +23,14 @@ class Park < ApplicationRecord
     end
     return total / reviews.count.to_f.round(1)
   end
+  
+  def rating
+    reviews = self.reviews
+    total = 0
+    reviews.each do |review|
+      total += review.rating
+    end
+    self.rating = total / reviews.count.to_f.round(1)
+  end
 end
 
