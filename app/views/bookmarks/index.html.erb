@@ -1,6 +1,10 @@
 <div class="items d-flex">
     <div class="card-fav">
-      <%= cl_image_tag current_user.avatar.key, class: "avatar-bookmark" %>
+      <% if current_user.avatar.attached? %>
+        <%= cl_image_tag current_user.avatar.key, class: "avatar-bookmark" %>
+      <% else %>
+        <%= image_tag "https://i.pravatar.cc/150?img=13", class: "avatar-bookmark" %>
+      <% end %>
       <h1> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h1>
       <p class="title">My favorite parks</p>
     </div>
@@ -13,6 +17,8 @@
             <%= cl_image_tag bookmark.park.key %>
           <% end %>
           <div class="card-park-infos">
+            <% @rating = bookmark.park.calculate_average %>
+            <%= render 'parks/rating' %>
             <div>
               <%=link_to bookmark.park.name, park_path(bookmark.park) %>
             </div>

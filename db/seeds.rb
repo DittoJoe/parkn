@@ -10,6 +10,7 @@ def handle_string_io_as_file(io, filename)
 end
 
 puts "Deleting current items..."
+
 Park.destroy_all
 User.destroy_all
 Category.destroy_all
@@ -19,11 +20,13 @@ Vote.destroy_all
 Review.destroy_all
 
 puts "Creating users..."
+
 User.create(email: 'cristina@example.com', password: '123456', first_name: 'Cristina', last_name: 'Salazar')
 User.create(email: 'mikael@example.com', password: '123456', first_name: 'Mikael', last_name: 'Svensson')
 User.create(email: 'joe@example.com', password: '123456', first_name: 'Joe', last_name: 'Rohde')
 
 puts "Loading from CSV..."
+
 csv_file = File.join(__dir__, 'parks.csv')
 
 csv_data = CSV.read('parks.csv')
@@ -32,6 +35,7 @@ csv_data.each do |row|
 end
 
 puts "Seeding categories..."
+
 Category.create(name: 'parking', emoji: 'parking')
 Category.create(name: 'toilets', emoji: 'toilet')
 Category.create(name: 'skating', emoji: 'skating')
@@ -46,11 +50,13 @@ Category.create(name: 'drinking allowed', emoji: 'beer')
 Category.create(name: 'running', emoji: 'running')
 
 puts "Almost there..."
+
 Park.all.each do |park|
   Category.all.each do |category|
     ParkCategory.create(category_id: category.id, park_id: park.id)
   end
 end
+
 puts "Done!"
 
 # Code we don't need anymore but nice to keep
