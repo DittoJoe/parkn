@@ -31,12 +31,12 @@ class Park < ApplicationRecord
       total += review.rating
     end
     average = total / reviews.count.to_f.round(1)
-    raise
-    unless average.nil?
+    unless average.nan?
       self.rating = average
     else
-      self.rating = 2.5
+      self.rating = 1.0
     end
+    self.rating = 1.0 if self.rating.nil?
   end
 end
 

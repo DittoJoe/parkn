@@ -1,21 +1,8 @@
 class ParksController < ApplicationController
   def index
     @parks = Park.all
-      if params[:sorting].present?
-        if params[:sorting] == "Alphabetical"
-          @parks = @parks.order('name ASC')
-        elsif params[:sorting] == "Rating"
-          @parks.each do |p|
-            p.get_rating
-          end
-          @parks = @parks.order('rating ASC')
-        end
-      end
-    if params[:query].present?
-      #sql_query = "name ILIKE :query OR details ILIKE :query"
-      @parks = @parks.search_by_name_and_details(params[:query])
-    else
-      @parks = @parks
+    @parks.each do |p|
+      p.get_rating
     end
     @markers = @parks.geocoded.map do |park|
       {
@@ -23,6 +10,11 @@ class ParksController < ApplicationController
         lng: park.longitude,
         info_window: render_to_string(partial: "info_window", locals: { park: park })
       }
+    end
+    if params[:query].present?
+      @parks = @parks.search_by_name_and_details(params[:query]).sort_by(&:rating).reverse
+    else
+      @parks = @parks.sort_by(&:rating).reverse
     end
   end
 
