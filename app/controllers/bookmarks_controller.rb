@@ -28,6 +28,14 @@ class BookmarksController < ApplicationController
         format.json { render json: { partial: render_to_string(partial: "bookmarks/create.html.erb") } }
       end
     end
-    # redirect_to park_path(@bookmark.park)
+  end
+
+  def destroy_fresh
+     @bookmark = Bookmark.find(params[:id]) if Bookmark.find(params[:id])
+    if Bookmark.find(params[:id])
+      @park = @bookmark.park
+      @bookmark.destroy
+      redirect_to bookmarks_path
+    end
   end
 end
