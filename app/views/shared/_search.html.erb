@@ -1,12 +1,12 @@
-    <div class="search-bar">
-      <%= form_tag parks_path, method: :get do %>
-      <div class="d-flex search_bar">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Find a park"
-          %>
-       <%= submit_tag "Search", class: "btn btn-primary" %></div>
-      <% end %>
-    </div>
+<div class="search-bar">
+  <%= form_tag parks_path, method: :get do %>
+  <div class="d-flex search_bar">
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a park"
+      %>
+   <%= submit_tag "Search", class: "btn btn-primary" %></div>
+  <% end %>
+</div>
 

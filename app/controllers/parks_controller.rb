@@ -1,13 +1,13 @@
 class ParksController < ApplicationController
   def index
     @parks = Park.all
-    @parks.each do |p|
-      p.rating
-    end
       if params[:sorting].present?
-        if params[:sorting] == "alphabetical"
+        if params[:sorting] == "Alphabetical"
           @parks = @parks.order('name ASC')
-        elsif params[:sorting] == "rating"
+        elsif params[:sorting] == "Rating"
+          @parks.each do |p|
+            p.get_rating
+          end
           @parks = @parks.order('rating ASC')
         end
       end
