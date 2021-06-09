@@ -10,12 +10,8 @@ class ReviewsController < ApplicationController
     @park = Park.find(params[:park_id])
     @review.park = @park
     @review.user = current_user
-    if @review.save
-      @rating = calculate_average(@park)
-      redirect_to park_path(@park)
-    else
-      render 'reviews/modal'
-    end
+    @rating = calculate_average(@park)
+    redirect_to park_path(@park)
   end
 
   private
