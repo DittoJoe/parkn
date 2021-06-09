@@ -31,6 +31,10 @@ class ParksController < ApplicationController
     @reviews = Review.all
     @park = Park.find(params[:id])
     @park_categories = ParkCategory.where(park_id: @park.id)
+    @park_categories.each do |pc|
+      pc.score
+    end
+    # raise
     @park_arr = []
     @park_arr << @park
     @markers = @park_arr.map do |park|
@@ -41,7 +45,7 @@ class ParksController < ApplicationController
       }
     end
     @favorite = is_favorite?(@park.id)
-    @rating = calculate_average(@park)
+    @rating = @park.calculate_average
   end
 
   def new
@@ -80,14 +84,5 @@ class ParksController < ApplicationController
     @user = current_user
     @bookmark = @user.bookmarks.where(:park_id => id)
     return !@bookmark.empty?
-  end
-
-  def calculate_average(park)
-    reviews = park.reviews
-    total = 0
-    reviews.each do |review|
-      total += review.rating
-    end
-    return total / reviews.count.to_f.round(1)
   end
 end

@@ -17,7 +17,9 @@
             <%= cl_image_tag park.key %>
           <% end %>
             <div class="card-park-infos">
-              <div><h2><%= park.name %></h2></div>
+              <% @rating = park.calculate_average %>
+              <%= render 'rating' %>
+              <h2><%= park.name %></h2>
               <p class="card-park-region"> <%= park.region %></p>
             </div>
          </div>

@@ -13,28 +13,16 @@
         <div data-controller="like" data-like-target="link" data-park="<%= @park.id %>" data-bookmark="<%= Bookmark.find_by(user: current_user, park: @park).id if Bookmark.find_by(user: current_user, park: @park)%>">
           <% unless @favorite %>
             <%= link_to park_bookmarks_path(@park), method: "post", data: { action: "click->like#create"} do %>
-              <i class="far fa-heart"></i>
+              <i class="far fa-heart empty-heart"></i>
             <% end %>
           <% else %>
             <%= link_to bookmark_path(Bookmark.find_by(user: current_user, park: @park)), method: "delete", data: { action: "click->like#delete", bookmark: Bookmark.find_by(user: current_user, park: @park).id} do %>
-              <i class="fas fa-heart"></i>
+              <i class="fas fa-heart full-heart"></i>
             <% end %>
           <% end %>
         </div>
         <%= render 'rating' %>
-        <div class="emoji-cards">
-          <% @park_categories.each do |park_category| %>
-          <%= link_to '#', class: 'emoji-button', method: :post, remote: true, data: { controller: "counter", action: "click->counter#refresh"} do %>
-            <div class="emoji-card">
-              <h3 class="emoji">
-                <i class="fas fa-<%= park_category.category.emoji %>" title="<%= park_category.category.name.capitalize %>"></i>
-              </h3>
-              <div class="line"></div>
-              <h3 class="counter" data-counter-target="count" data-category="<%= park_category.id %>" ><%= park_category.votes.count %></h3>
-            </div>
-          <% end %>
-          <% end %>
-        </div>
+        <%= render 'emoji' %>
         <div>
           <h3><%= @park.details %></h3>
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Add a review</button>
@@ -47,10 +35,14 @@
       <% @reviews.each do |review| %>
         <div class="card-review">
           <div class="avatar-img">
-            <%= cl_image_tag current_user.avatar.key, class: "avatar-review" %>
+            <% if current_user.avatar.attached? %>
+              <%= cl_image_tag current_user.avatar.key, class: "avatar-review" %>
+            <% else %>
+              <%= image_tag "https://i.pravatar.cc/150?img=13", class: "avatar-review" %>
+            <% end %>
           </div>
           <div class="card-review-text">
-            <span id="review-name"> <%= review.user.first_name %> <%= review.user.last_name %> </span> 
+            <span id="review-name"> <%= review.user.first_name %> <%= review.user.last_name %> </span>
             <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span>
             <p> <%= review.content %> </p>
           </div>

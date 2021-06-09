@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create, :index]
   end
   resources :bookmarks, only: [:index, :destroy]
+  delete 'bookmarks/:id/d', to: 'bookmarks#destroy_fresh', as: :destroy_fresh
   resources :park_categories do
     resources :votes, only: [:create, :index]
   end
