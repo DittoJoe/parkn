@@ -7,6 +7,7 @@
       <% end %>
       <h1> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </h1>
       <p class="title">My favorite parks</p>
+      <p id="leaf-black">By <i class="fas fa-leaf leaf-black"></i> ParkN</p>
     </div>
     <div class="cards-index fav-park">
       <% @bookmarks.each do |bookmark| %>

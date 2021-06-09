@@ -3,9 +3,10 @@
   border-color: #048c5e;
 }
 
+
 #query {
   color: black!important;
-
+  opacity: 0.6;
 }
 
 .home-search-bar {
@@ -15,7 +16,7 @@
 .home-search-bar .search-bar{
   width: 100%;
   #query {
-  	opacity: 0.6; 
+  	opacity: 0.6;
   }
   .btn-flat {
   	opacity: 1;
