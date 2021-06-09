@@ -1,26 +1,28 @@
-<div class="srch">
-  <%= render 'shared/search' %>
-  <div class="search-bar"></div>
-</div>
 <div class="show-container">
-  <div class="cards-index">
-    <% @parks.each do |park| %>
-      <%= link_to park_path(park) do %>
-        <div class="card-park">
-          <% if park.photos.attached? %>
-            <%= cl_image_tag park.photos.first.key %>
-          <% else %>
-            <%= cl_image_tag park.key %>
-          <% end %>
-            <div class="card-park-infos">
-              <% @rating = park.calculate_average %>
-              <%= render 'rating' %>
-              <h2><%= park.name %></h2>
-              <p class="card-park-region"> <%= park.region %></p>
-            </div>
-         </div>
+  <div class="container">
+    <div class="srch">
+      <%= render 'shared/search' %>
+      <div class="search-bar"></div>
+    </div>
+    <div class="cards-index">
+      <% @parks.each do |park| %>
+        <%= link_to park_path(park) do %>
+          <div class="card-park">
+            <% if park.photos.attached? %>
+              <%= cl_image_tag park.photos.first.key %>
+            <% else %>
+              <%= cl_image_tag park.key %>
+            <% end %>
+              <div class="card-park-infos">
+                <% @rating = park.calculate_average %>
+                <%= render 'rating' %>
+                <h2><%= park.name %></h2>
+                <p class="card-park-region"> <%= park.region %></p>
+              </div>
+           </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
   <div id="map"
      style="width: 100%; height: 600px;"
