@@ -104,16 +104,9 @@
   top: -240px;
   width: 40px;
   font-size: 24px;
-  -webkit-text-stroke: 2px white;
+  -webkit-text-stroke: .3px #c34535;
+
 }
-
-//.empty-heart{
-  //-webkit-text-stroke: 2px white;
-//}
-
-//.full-heart{
-  //-webkit-text-stroke: 2px white;
-//}
 
 //bookmarks_index
 .fav-park .heart {
@@ -125,6 +118,7 @@
  font-size: 24px;
 }
 
+
 .rating {
   display: flex;
   position: absolute;
@@ -135,5 +129,6 @@
   i {
     margin: 0 4px;
     color: $yellow;
+     -webkit-text-stroke: .3px $yellow;
   }
 }
