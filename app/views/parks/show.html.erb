@@ -13,11 +13,11 @@
         <div data-controller="like" data-like-target="link" data-park="<%= @park.id %>" data-bookmark="<%= Bookmark.find_by(user: current_user, park: @park).id if Bookmark.find_by(user: current_user, park: @park)%>">
           <% unless @favorite %>
             <%= link_to park_bookmarks_path(@park), method: "post", data: { action: "click->like#create"} do %>
-              <i class="far fa-heart"></i>
+              <i class="far fa-heart empty-heart"></i>
             <% end %>
           <% else %>
             <%= link_to bookmark_path(Bookmark.find_by(user: current_user, park: @park)), method: "delete", data: { action: "click->like#delete", bookmark: Bookmark.find_by(user: current_user, park: @park).id} do %>
-              <i class="fas fa-heart"></i>
+              <i class="fas fa-heart full-heart"></i>
             <% end %>
           <% end %>
         </div>
@@ -42,7 +42,7 @@
             <% end %>
           </div>
           <div class="card-review-text">
-            <span id="review-name"> <%= review.user.first_name %> <%= review.user.last_name %> </span> 
+            <span id="review-name"> <%= review.user.first_name %> <%= review.user.last_name %> </span>
             <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span>
             <p> <%= review.content %> </p>
           </div>

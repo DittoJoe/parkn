@@ -22,9 +22,9 @@
             <div>
               <%=link_to bookmark.park.name, park_path(bookmark.park) %>
             </div>
-             <div data-controller="like" data-like-target="link" data-park="<%= bookmark.park.id %>" data-bookmark="<%= Bookmark.find_by(user: current_user, park: bookmark.park).id if Bookmark.find_by(user: current_user, park: bookmark.park)%>">
-                  <%= link_to bookmark_path(Bookmark.find_by(user: current_user, park: bookmark.park)), method: "delete", data: { action: "click->like#delete"}, bookmark: Bookmark.find_by(user: current_user, park: bookmark.park.id) do %>
-                    <i class="fas fa-heart heart"></i>
+             <div>
+                  <%= link_to "bookmarks/#{bookmark.id}/d", method: :delete, data: { confirm: "Remove from favorites?" } do %>
+                    <i class="fas full-heart fa-heart heart"></i>
                 <% end %>
             </div>
           </div>

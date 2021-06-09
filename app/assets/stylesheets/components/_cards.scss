@@ -104,8 +104,20 @@
   top: -240px;
   width: 40px;
   font-size: 24px;
-  color: #c34535;
+  -webkit-text-stroke: .3px #c34535;
+
 }
+
+//bookmarks_index
+.fav-park .heart {
+ color: #c34535;
+ position: absolute;
+ right: 8px;
+ top: -180px;
+ width: 40px;
+ font-size: 24px;
+}
+
 
 .rating {
   display: flex;
@@ -117,5 +129,6 @@
   i {
     margin: 0 4px;
     color: $yellow;
+     -webkit-text-stroke: .3px $yellow;
   }
 }
