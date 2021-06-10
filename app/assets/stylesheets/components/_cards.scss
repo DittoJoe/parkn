@@ -68,6 +68,7 @@
 .card-show h3 {
   font-size: 24px;
   margin: 16px 0;
+  font-family: 'Overlock', cursive;
 }
 
 .card-show p {
@@ -131,4 +132,7 @@
     color: $yellow;
      -webkit-text-stroke: .3px $yellow;
   }
+}
+h1, .h1 {
+font-family: 'Overlock', cursive;
 }
