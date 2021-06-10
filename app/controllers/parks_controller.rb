@@ -16,6 +16,13 @@ class ParksController < ApplicationController
       @parks.each do |p|
         p.get_rating
       end
+      @markers = @parks.geocoded.map do |park|
+      {
+        lat: park.latitude,
+        lng: park.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { park: park })
+      }
+      end
       @parks = @parks.sort_by(&:rating).reverse
     else
       @parks = @parks.sort_by(&:rating).reverse
