@@ -12,8 +12,6 @@ class BookmarksController < ApplicationController
 
       @bookmark.save!
       if @bookmark.save!
-        p '------------------------------------------------------------------------------------'
-        p @bookmark
         respond_to do |format|
           format.html
           format.json {render json: { partial: render_to_string(partial: "bookmarks/delete.html.erb") }}

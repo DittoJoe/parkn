@@ -17,6 +17,7 @@
               <i class="fas fa-heart full-heart" data-action="click->like#delete"  data-bookmark="<%= @bookmark.id %>"></i>
           <% end %>
         </div>
+        <% @rating = @park.rating %>
         <%= render 'rating' %>
         <%= render 'emoji' %>
         <div>
@@ -70,3 +71,5 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
+<% console %>

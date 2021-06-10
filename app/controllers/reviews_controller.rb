@@ -10,7 +10,8 @@ class ReviewsController < ApplicationController
     @park = Park.find(params[:park_id])
     @review.park = @park
     @review.user = current_user
-    @rating = calculate_average(@park)
+    @park.get_rating
+    @review.save
     redirect_to park_path(@park)
   end
 
@@ -18,14 +19,5 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :content)
-  end
-
-  def calculate_average(park)
-    reviews = park.reviews
-    total = 0
-    reviews.each do |review|
-      total += review.rating
-    end
-    return total / reviews.count.to_f.round(1)
   end
 end
