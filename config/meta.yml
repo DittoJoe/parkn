@@ -1,0 +1,5 @@
+meta_product_name: "ParkN"
+meta_title: "ParkN - Find a park with just a click"
+meta_description: "ParkN gives you park information with just a click! Make your park visits more fun."
+meta_image: "park.1jpg" # should exist in `app/assets/images/`
+
