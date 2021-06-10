@@ -74,7 +74,7 @@ class ParksController < ApplicationController
 
   def is_favorite?(id)
     @user = current_user
-    @bookmark = @user.bookmarks.where(:park_id => id)
-    return !@bookmark.empty?
+    @bookmark = @user.bookmarks.where(:park_id => id).last
+    return @bookmark.present?
   end
 end
