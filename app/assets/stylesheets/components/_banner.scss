@@ -12,12 +12,13 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
+  font-family: 'Overlock', cursive;
 }
 
 .banner p {
   font-size: 20px;
   color: white;
-  opacity: .7;
+  opacity: .8;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
@@ -27,4 +28,10 @@
   border-radius: 4px;
   background: #079D6B;
   transition: background 0.3s ease;
+}
+
+.til{
+  font-family: 'Amatic SC', cursive;
+  color: white;
+  font-size: 42px;
 }
