@@ -12,7 +12,11 @@ class ParksController < ApplicationController
       }
     end
     if params[:query].present?
-      @parks = @parks.search_by_name_and_details(params[:query]).sort_by(&:rating).reverse
+      @parks = @parks.search_by_name_and_details(params[:query])
+      @parks.each do |p|
+        p.get_rating
+      end
+      @parks = @parks.sort_by(&:rating).reverse
     else
       @parks = @parks.sort_by(&:rating).reverse
     end
@@ -20,13 +24,12 @@ class ParksController < ApplicationController
 
   def show
     @review = Review.new
-    @reviews = Review.all
     @park = Park.find(params[:id])
+    @reviews = @park.reviews
     @park_categories = ParkCategory.where(park_id: @park.id)
     @park_categories.each do |pc|
       pc.score
     end
-    # raise
     @park_arr = []
     @park_arr << @park
     @markers = @park_arr.map do |park|
@@ -37,7 +40,8 @@ class ParksController < ApplicationController
       }
     end
     @favorite = is_favorite?(@park.id)
-    @rating = @park.calculate_average
+    @park.get_rating
+    @user = current_user
   end
 
   def new

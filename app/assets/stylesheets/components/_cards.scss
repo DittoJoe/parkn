@@ -25,8 +25,19 @@
   }
 }
 
-
-
+.emoji-card-clicked {
+  border: solid 1px black;
+  border-radius: 16px;
+  padding: 0px 16px 0px 8px;
+  margin: 4px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+  background-color: #D8FDF1!important;
+  h3 {
+    padding: 4px 0px;
+  }
+}
 
 .emoji {
   margin: 0!important;
