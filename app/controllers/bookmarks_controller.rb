@@ -8,6 +8,7 @@ class BookmarksController < ApplicationController
     @bookmark = Bookmark.new
     @park = Park.find(params[:park_id])
     @bookmark.park = @park
+    @park.get_rating
     @bookmark.user = current_user
 
       @bookmark.save!
@@ -17,7 +18,6 @@ class BookmarksController < ApplicationController
           format.json {render json: { partial: render_to_string(partial: "bookmarks/delete.html.erb") }}
         end
       end
-    # redirect_to park_path(@park)
   end
 
   def destroy
