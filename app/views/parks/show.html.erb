@@ -28,7 +28,7 @@
       </div>
     </div>
     <div class="review-container">
-      <h1>Comments</h1>
+      <h1>Reviews</h1>
       <% @reviews.each do |review| %>
         <div class="card-review">
           <div class="review-rating">
@@ -49,14 +49,14 @@
             <% end %>
           </div>
           <div class="avatar-img">
-            <% if current_user.avatar.attached? %>
-              <%= cl_image_tag current_user.avatar.key, class: "avatar-review" %>
+            <% if review.user.avatar.attached? %>
+              <%= cl_image_tag review.user.avatar.key, class: "avatar-review" %>
             <% else %>
               <%= image_tag "https://i.pravatar.cc/150?img=13", class: "avatar-review" %>
             <% end %>
           </div>
           <div class="card-review-text">
-            <span id="review-name"> <%= review.user.first_name %> <%= review.user.last_name %> </span>
+            <span id="review-name"> <%= review.user.first_name.capitalize %> <%= review.user.last_name.capitalize %> </span>
             <span id="review-time"> <%= review.created_at.strftime("%a %b %e") %> </span>
             <p> <%= review.content %> </p>
           </div>
