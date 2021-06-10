@@ -43,3 +43,16 @@
   margin-left: 24px;
 }
 
+.review-rating {
+  display: flex;
+  position: absolute;
+  left: 380px;
+  width: 240px;
+  font-size: 24px;
+  i {
+    margin: 0 4px;
+    color: $yellow;
+     -webkit-text-stroke: .3px $yellow;
+  }
+}
+
