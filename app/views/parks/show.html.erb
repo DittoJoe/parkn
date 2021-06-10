@@ -30,6 +30,23 @@
       <h1>Comments</h1>
       <% @reviews.each do |review| %>
         <div class="card-review">
+          <div class="review-rating">
+            <i class="fas fa-star"></i>
+            <% @rating = review.rating %>
+            <% if @rating < 1.5 %>
+              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+            <% elsif @rating < 2.5 %>
+              <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+            <% elsif @rating < 3.5 %>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+            <% elsif @rating < 4.5 %>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+            <% elsif @rating == 5.0 %>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <% else %>
+              <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+            <% end %>
+          </div>
           <div class="avatar-img">
             <% if current_user.avatar.attached? %>
               <%= cl_image_tag current_user.avatar.key, class: "avatar-review" %>
@@ -43,6 +60,7 @@
             <p> <%= review.content %> </p>
           </div>
         </div>
+
       <% end %>
     </div>
   </div>
@@ -52,5 +70,3 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
-
-<% console %>
