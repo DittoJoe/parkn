@@ -2,7 +2,7 @@
   <div class="home-container" style="">
     <h1><strong class="til">ParkN</strong> gives you park information with just a click!</h1>
     <p>Make your park visits more fun.</p>
-    <div class="home-search-bar">
+    <a class="btn btn-flat">
     <%= form_tag parks_path, method: :get do %>
        <div class="d-flex search_bar">
         <%= text_field_tag :query,
