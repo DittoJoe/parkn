@@ -1,35 +1,35 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
 </style>
 
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "/", class: "navbar-brand" do %>
     <h1 class="parkn">Park<strong>N</strong></h1>
   <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler mobile-hide" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon mobile-hide"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse mobile-hide" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto mobile-hide">
       <% if user_signed_in? %>
-        <li class="nav-item">
+        <li class="nav-item mobile-hide">
           <%= link_to "Explore", parks_path, class: "nav-link un" %>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown mobile-hide">
           <% if current_user.avatar.attached? %>
-            <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle mobile-hide", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
-            <%= cl_image_tag "default_avatar", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= cl_image_tag "default_avatar", class: "avatar dropdown-toggle mobile-hide", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% end %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Add a park", new_park_path, class: "dropdown-item" %>
-            <%= link_to "My Parks", bookmarks_path(@bokmarks), class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <div class="dropdown-menu dropdown-menu-right mobile-hide" aria-labelledby="navbarDropdown">
+            <%= link_to "Add a park", new_park_path, class: "dropdown-item mobile-hide" %>
+            <%= link_to "My Parks", bookmarks_path(@bokmarks), class: "dropdown-item mobile-hide" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item mobile-hide" %>
           </div>
         </li>
       <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+        <li class="nav-item mobile-hide">
+          <%= link_to "Login", new_user_session_path, class: "nav-link mobile-hide" %>
         </li>
       <% end %>
     </ul>

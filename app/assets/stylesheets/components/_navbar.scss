@@ -9,8 +9,8 @@
 .navbar-lewagon h1 {
   font-family: 'Amatic SC', cursive;
   color: white;
-  font-size: 52px;
-  margin-bottom: 0; 
+  font-size: 5vh;
+  margin-bottom: 0;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -25,7 +25,7 @@
 .navbar-light .navbar-nav .nav-link {
   color: white;
   margin-right: 22px;
-  font-size: 18px;
+  font-size: 2vh;
   transition: 300ms;
   border-bottom: 1px solid transparent;
 }
@@ -34,4 +34,14 @@
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
  color: white;
  border-color: white;
+}
+
+@media(max-width: 768px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .footer {
+    display: none !important;
+  }
 }

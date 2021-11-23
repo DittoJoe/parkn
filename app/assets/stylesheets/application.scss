@@ -12,3 +12,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+@media(max-width: 768px) {
+  .mobile-hide {
+    display: none !important;
+  }
+}
+
+@media(min-width: 769px) {
+  .desktop-hide {
+    display: none !important;
+  }
+}
